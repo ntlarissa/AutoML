@@ -9,3 +9,7 @@ L'utilisation de l'application nécessite l'installation de quelques librairies 
     NumPy
     scikit-learn
     pandas
+
+# Utilisation
+
+Il faut executer le fichier assistance.py en utilisant la commande 

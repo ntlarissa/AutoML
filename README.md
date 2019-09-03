@@ -9,6 +9,8 @@ L'utilisation de l'application nécessite l'installation de quelques librairies 
     NumPy
     scikit-learn
     pandas
+    Keras
+    TensorFlow
 
 # Utilisation
 

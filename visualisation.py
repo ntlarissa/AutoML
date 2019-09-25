@@ -15,43 +15,40 @@ etape=1
 def complete(text, state):
     return (glob.glob(text+'*')+[None])[state]
 
-def InitVisual():
-    global data
+def InitVisual(data):
     print("**** Bienvenue dans l\'outil de visualisation des données ****\n")
-    #readline.set_completer_delims(' \t\n;')
-    #readline.parse_and_bind("tab: complete")
-    #readline.set_completer(complete)
-    pathFile=input("Entrez le chemin du fichier (vous pouvez utiliser wget pour télécharger le fichier): ")
-    #KDDTrain+.csv UNSW_NB15_training-set_selected.csv ./data/Wednesday-workingHours.pcap_ISCX.csv
-    ok,data=loadData(pathFile)
-    if ok:
-        getInfo(data)
-        data.describe()
-        showMatrix(data)
-    else:
-        print("Une erreur s\'est produite: ",data)
-    return Quit()
+    getInfo(data)
+    data.describe()
+    showMatrix(data)
+   
 
-def Quit():
+def Quit(data):
     choix=input("Voulez vous continuer avec une autre opération???(y/n) :")
-    return choix
+    return choix,data
 
 def loadData(chemin):
     try: 
-        data = pd.read_csv(chemin,low_memory=False)
+        data = pd.read_csv(chemin,low_memory=False, skipinitialspace=True, quotechar='"')
         return True,data
     except:
         return False,"le fichier", chemin, "est introuvable."
 
 def showMatrix(data):
     corr=data.corr()
-    #print (corr)
+    print ("\nLa figure presente la matrice de corrélation qui permet d'annalyser la dépendance entre les features. ")
     plt.figure(figsize=(25,25))
     sns.heatmap(corr, annot=True,fmt=".1f")
     plt.tight_layout()
     plt.show()
 
 def getInfo(data):
-    print("Les dimensions: ",data.shape)
+    print("Ce jeu de données contient ",data.shape[0]," échantillons. Chaque échantillon étant répresentée par ",data.shape[1], " features.\n" )
+    print("un aperçu des quatre premiers échantillons:" )
     print(data.head())
+    print("\n Les features ont les types suivants:")
     print(data.info())
+
+def GetPath(pathFile):
+    if(pathFile==""):
+        return False,pathFile
+    return True,pathFile

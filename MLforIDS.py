@@ -18,7 +18,7 @@ def Choix(i,step):
         elif i == 3:
             return InitLeaMod()
         elif i == 4:
-            return Quit(data)
+            return Quit(0)
         else:
             return "Veuillez choisir la bonne opération!!!"
     elif(step==1):
@@ -75,10 +75,10 @@ def Process(step):
             deleteFile()
         else:
             print("\nVeuillez entrer la bonne lettre!!!")
-            Process()
+            Process(0)
     else:
         print("Veuillez entrer un chiffre!!!")
-        Process()
+        Process(0)
 
 def OperationList(step):
     if(step==0):
@@ -130,6 +130,8 @@ def deleteFile():
         shutil.rmtree('./workspace/datax')
     except:
         print("Erreur lors de la suppression!!!!")
+
+#debut
 print('**** Bienvenue dans l\'assistance  d\' apprentissage ****')
 parser = argparse.ArgumentParser()
 parser.add_argument("-f", "--file", help="chemin du fichier contenant le dataset")

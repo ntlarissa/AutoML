@@ -26,7 +26,7 @@ def InitFeaEng():
         print("    Nous pouvons distinguer deux approches pour l'implementer:")
         print("           **La selecton des features qui consiste à choisir un sous ensemble optimal de features.")
         print("                 1) La matrice de corrélation, le temps de traitement est moins d'une minuite")
-        print("                 2) gain d'information, le temps de traitement est  ",0.000277*data.shape[0]*data.shape[1]," minuites")
+        print("                 2) gain d'information, le temps de traitement est  ",0.001357*data.shape[0]," secondes")
         print("           **L'extraction  des features qui consiste à créer un sous ensemble optimal de features.")
         print("                 3) L'analyse en composantes principales, le temps de traitement est moins d'une minuite ")
         print("                 4) L'analyse discriminate linéaire, le temps de traitement est moins d'une minuite ")
@@ -64,8 +64,6 @@ def Technique(i,data):
 
 def MaCorr(data):
     new_data=""
-    print("Ce traitement peut mettre en moyenne ",0.0135*data.shape[0]," secondes.")
-    new_data=""
     len=data.shape[1]
     taille=len/4
     X_train=data.iloc[:,0:len-1]
@@ -90,7 +88,6 @@ def MaCorr(data):
     if(IsInt(nbre_ss_ens)):
         taille=int(nbre_ss_ens)
     new_data=pd.concat([X_train[resultat.index[0:taille]],Y_train],axis=1,sort=False) 
-    new_data.to_csv("./workspace/datax/datafeaGI.csv",index=False)
     print(new_data.head())
     data.to_csv("./workspace/datax/datafeaMC.csv")
     return new_data

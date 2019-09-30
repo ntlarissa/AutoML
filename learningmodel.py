@@ -123,7 +123,7 @@ def InitLeaMod():
                                                     alpha=opacity,
                                                     color='c',
                                                     label='DT')
-                                plt1.plot(xaxis, [accuracy_score_DT]*nclaase,color='black', label="ACC-DT")
+                                #plt1.plot(xaxis, [accuracy_score_DT]*nclaase,color='black', label="ACC-DT")
                                 
                                 rects31 = plt2.bar(index+ 2*bar_width, recall_DT, bar_width,
                                                     alpha=opacity,
@@ -141,14 +141,14 @@ def InitLeaMod():
                                                         alpha=opacity,
                                                         color='b',
                                                         label='RF')
-                                plt2.plot(xaxis, [accuracy_score_RF]*nclaase,color='black', label="ACC-RF")
+                                #plt2.plot(xaxis, [accuracy_score_RF]*nclaase,color='black', label="ACC-RF")
                             elif(int(c)==3):
                                 accuracy_score_KNN,precision_mean_score_KNN,precision_KNN,recall_KNN=KNN(X,Y,int(cv),float(taux),nclaase)
                                 rects4 = plt1.bar(index + 3*bar_width, precision_KNN, bar_width,
                                             alpha=opacity,
                                             color='r',
                                             label='KNN')
-                                plt1.plot(xaxis, [accuracy_score_KNN]*nclaase,color='b', label="ACC-KNN")
+                                #plt1.plot(xaxis, [accuracy_score_KNN]*nclaase,color='b', label="ACC-KNN")
                                 rects41 = plt2.bar(index + 3*bar_width, recall_KNN, bar_width,
                                             alpha=opacity,
                                             color='r',
@@ -164,14 +164,14 @@ def InitLeaMod():
                                                 alpha=opacity,
                                                 color='g',
                                                 label='SVM')
-                                plt2.plot(xaxis, [accuracy_score_SVM]*nclaase,color='r', label="ACC-SVM")
+                                #plt2.plot(xaxis, [accuracy_score_SVM]*nclaase,color='r', label="ACC-SVM")
                             elif(int(c)==5):
                                 accuracy_score_NB,precision_mean_score_BN,precision_NB,recall_NB=GB(X,Y,int(cv),float(taux),nclaase)
                                 rects5 = plt1.bar(index+ 4*bar_width, precision_NB, bar_width,
                                                 alpha=opacity,
                                                 color='y',
                                                 label='NB')
-                                plt1.plot(xaxis, [accuracy_score_NB]*nclaase,color='g', label="ACC-NB")
+                                #plt1.plot(xaxis, [accuracy_score_NB]*nclaase,color='g', label="ACC-NB")
                                 rects51 = plt2.bar(index+ 4*bar_width, recall_NB, bar_width,
                                                 alpha=opacity,
                                                 color='y',

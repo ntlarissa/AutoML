@@ -3,6 +3,7 @@ from visualisation import loadData, Quit
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import OneHotEncoder,LabelEncoder,StandardScaler
+from collections import Counter
 #from assistance import GetPath
 
 #cette fonction effectue le prétraitement
@@ -36,6 +37,8 @@ def InitPrepro():
         print("\nLes données manquantes ont été supprimées et les données normalisées.")
         print("\nCe nouveau jeu de données contient ",data.shape[0]," échantillons. Chaque échantillon étant répresentée par ",data.shape[1], " features.\n")
         print(data.head())
+        print("\n La statistique des classes:")
+        print(Counter(data[target]))
         data.to_csv("./workspace/datax/datapre.csv",index=False)
         choix=input("\nVoulez vous sauvergarder les modifications effectuées???(y/n) :")
         q=choix.lower()
